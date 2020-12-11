@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="CHAT_WPF.GUIs.MessageFileControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CHAT_WPF.GUIs"
+             mc:Ignorable="d">
+    <Border Height="50" Width="280" Margin="10 10 10 10" CornerRadius="1"  Background="#F1F0EF">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0.3" BlurRadius="5" Opacity="0.3" />
+        </Border.Effect>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Width="30" Height="30">
+                <Border.Background>
+                    <ImageBrush x:Name="FileIcon" ImageSource="../Asset/img_icon.png"/>
+                </Border.Background>
+            </Border>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock x:Name="FileNameTextBlock" Text="Name image 1233.png " FontSize="14"  Foreground="#3C3C3C"/>
+            </StackPanel>
+            <Grid Grid.Column="2">
+                <Button Click="_Event_DownloadButton_Click"
+                      Style="{StaticResource MaterialDesignFloatingActionLightButton}"
+                      Margin="8"
+                      Command="{Binding SaveComand}"
+                      materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}"
+                      materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}" Height="25" Width="25" Background="White" BorderBrush="{x:Null}" Foreground="#DD000000">               
+                    <!-- simple example of toggling/animating pack icon with a data trigger-->
+                    <materialDesign:PackIcon Height="15" Width="15" Kind="Download">
+                    </materialDesign:PackIcon>
+                </Button>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

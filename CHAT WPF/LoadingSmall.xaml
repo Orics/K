@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="CHAT_WPF.LoadingSmall"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" >
+    <Grid>
+        <Button Width="20" Height="20" Background="White"
+          Style="{StaticResource MaterialDesignFloatingActionButton}"
+          materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+          materialDesign:ButtonProgressAssist.IndicatorForeground="{StaticResource PrimaryHueDarkBrush}"
+          materialDesign:ButtonProgressAssist.Value="-1" 
+          materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+          BorderBrush="White" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="CHAT_WPF.ContactTab"
+            xmlns:local="clr-namespace:CHAT_WPF"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            mc:Ignorable="d"
+            Height="600" Width="1000">
+    <UserControl.Resources>
+        <Storyboard x:Key="show_list_yourfriend">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="list_friend">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="show_list_search_friend">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="list_seach">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Load_list">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="list_friend">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="open_btn2">
+            <BeginStoryboard x:Name="show_list_search_friend_BeginStoryboard" Storyboard="{StaticResource show_list_search_friend}"/>
+            <StopStoryboard BeginStoryboardName="show_list_yourfriend_BeginStoryboard"/>
+            <StopStoryboard BeginStoryboardName="Load_list_BeginStoryboard1"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="open_btn1">
+            <BeginStoryboard x:Name="show_list_yourfriend_BeginStoryboard" Storyboard="{StaticResource show_list_yourfriend}"/>
+            <StopStoryboard BeginStoryboardName="show_list_search_friend_BeginStoryboard"/>
+            <StopStoryboard BeginStoryboardName="Load_list_BeginStoryboard1"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard x:Name="Load_list_BeginStoryboard1" Storyboard="{StaticResource Load_list}"/>
+            <StopStoryboard BeginStoryboardName="show_list_yourfriend_BeginStoryboard"/>
+            <StopStoryboard BeginStoryboardName="show_list_search_friend_BeginStoryboard"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="MessagePanel" Grid.Column="0" Background="#FFFFFF">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid x:Name="button_all" Grid.Row="0" Height="50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="open_btn1" Height="50" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0">
+                        <materialDesign:PackIcon Width="25" Height="25" Kind="UserSearch"/>
+                    </Button>
+                    <Button x:Name="open_btn2" Height="50" Style="{StaticResource MaterialDesignFlatButton}"  Grid.Column="1">
+                        <materialDesign:PackIcon Width="25" Height="25" Kind="GroupAdd" Foreground="{StaticResource PrimaryHueDarkBrush}"/>
+                    </Button>
+                    <Button x:Name="open_btn3" Height="50" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="2">
+                        <materialDesign:PackIcon Width="25" Height="25" Kind="ViewDashboard" Foreground="{StaticResource PrimaryHueDarkBrush}"/>
+                    </Button>
+                </Grid>
+                <Grid x:Name="list_friend" Grid.Row="1" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="seach_your_friend" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" >
+                            <Separator Background="{StaticResource PrimaryHueDarkBrush}" />
+                        </StackPanel>
+                        <TextBox Grid.Row="1" Margin="10 5" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Tìm kiếm bạn bè của bạn" Foreground="{StaticResource PrimaryHueDarkBrush}"/>
+                    </Grid>
+                    <StackPanel x:Name="usercontrol_your_friend" Grid.Row="1">
+                        <local:ListContactControl></local:ListContactControl>
+                        <local:ListContactControl></local:ListContactControl>
+                        <local:ListContactControl></local:ListContactControl>
+                        <local:ListContactControl></local:ListContactControl>
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="list_seach" Grid.Row="1" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="seach_friend" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" >
+                            <Separator Background="{StaticResource PrimaryHueDarkBrush}" />
+                        </StackPanel>
+                        <TextBox Grid.Row="1" Margin="10 5" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Nhập số điện thoại hoặc tên để tìm kiếm" Foreground="{StaticResource PrimaryHueDarkBrush}"/>
+                    </Grid>
+                    <StackPanel x:Name="usercontrol_friend" Grid.Row="1" >
+                        <local:SuggestFriendControl></local:SuggestFriendControl>
+                        <local:SuggestFriendControl></local:SuggestFriendControl>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <StackPanel x:Name="ConversationListBox"></StackPanel> 
+        </StackPanel>
+        <Grid Grid.Column="1" Background="#FFE4E4E4">
+            <Image Source="Asset/Capture1.PNG" Stretch="None"/>
+            <TextBlock Text="Make Friend" HorizontalAlignment="Center" Margin="282,129,282,0" FontSize="25" Foreground="{StaticResource PrimaryHueDarkBrush}"></TextBlock>
+            <!--<local:InfoBox></local:InfoBox>-->
+        </Grid>
+    </Grid>
+</UserControl>

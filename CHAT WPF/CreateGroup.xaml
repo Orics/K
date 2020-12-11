@@ -1,0 +1,71 @@
+﻿<Window x:Class="CHAT_WPF.CreateGroup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CHAT_WPF"
+        Icon="Asset/messenger3.png"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Login" Height="500" Width="420"
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" 
+        FontFamily="Segoe UI Emoji">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FFD7D7D7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Create group" FontSize="16px" Margin="20 0" VerticalAlignment="Center"></TextBlock>
+            <Button x:Name="close_btn_creategroup" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right"  Style="{StaticResource MaterialDesignFlatButton}" Click="close_btn_creategroup_Click" Width="59" >
+                <materialDesign:PackIcon Width="25" Height="25" Foreground="{StaticResource PrimaryHueDarkBrush}" Kind="Close"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0"  Margin="20 0 0 0">
+                <TextBlock Text="Group Name :" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1" Width="230">
+                <TextBox materialDesign:HintAssist.Hint="Enter group name" FontSize="16" VerticalAlignment="Center" Margin="0,0,0,0.2"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <TextBlock Text="Invite friend to this group conversation" VerticalAlignment="Center" Margin="20 10" Foreground="Black" FontSize="10"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="3" Margin="20 0" >
+            <TextBox materialDesign:HintAssist.Hint="Search friend by name or phonenumber" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0.2" Width="380"/>
+        </Grid>
+        <Grid Grid.Row="4" Margin="0 10">
+            <local:AddFriendGroup/>
+        </Grid>
+        <Grid Grid.Row="5">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="Gray" Grid.Column="1">
+                    CANCEL
+                </Button>
+                <Button Style="{StaticResource MaterialDesignFlatButton}"  Grid.Column="2">
+                    CREATE GROUP
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

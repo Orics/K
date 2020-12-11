@@ -1,0 +1,84 @@
+﻿<Window x:Class="CHAT_WPF.Addfriend"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CHAT_WPF"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Login" Height="500" Width="350" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" 
+        FontFamily="Segoe UI Emoji">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FFD7D7D7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Add friend" FontSize="16px" Margin="20 0" VerticalAlignment="Center"></TextBlock>
+            <Button x:Name="close_btn_addFriend" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right"  Style="{StaticResource MaterialDesignFlatButton}" Click="close_btn_addFriend_Click" Width="59" >
+                <materialDesign:PackIcon Width="25" Height="25" Foreground="{StaticResource PrimaryHueDarkBrush}" Kind="Close"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0"  Margin="20 0 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="5">
+                    <materialDesign:PackIcon Kind="Phone" Width="25" Height="25" RenderTransformOrigin="0.4,1.16" Margin="0,3,0,-1"></materialDesign:PackIcon>
+                </Grid>
+                <Grid Grid.Column="1" Margin="5">
+                    <TextBlock Text="(+84)" FontSize="20"></TextBlock>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1" Width="180">
+                <TextBox materialDesign:HintAssist.Hint="Phone Number" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Width="180"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" >
+                <materialDesign:PackIcon Width="25" Height="25" Foreground="Gray" VerticalAlignment="Center" Margin="10" Kind="At"></materialDesign:PackIcon>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBlock Text="You may know" VerticalAlignment="Center" Foreground="Gray" FontSize="20"></TextBlock>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3">
+            <local:SuggestFriendControl/>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="Gray" Grid.Column="1">
+                    CANCEL
+                </Button>
+                <Button Style="{StaticResource MaterialDesignFlatButton}"  Grid.Column="2">
+                    SEARCH
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

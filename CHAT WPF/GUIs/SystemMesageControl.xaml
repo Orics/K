@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="CHAT_WPF.GUIs.SystemMesageControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CHAT_WPF.GUIs"
+             mc:Ignorable="d" >
+    <Border  MaxWidth="400">
+        <Grid Margin="20 10">
+            <TextBlock x:Name="MessageContent" Text="Minh Khai added to this conversation by Ngoc Khai" HorizontalAlignment="Center" TextWrapping="Wrap" Background="Transparent" Foreground="DimGray"/>
+        </Grid>
+    </Border>
+</UserControl>

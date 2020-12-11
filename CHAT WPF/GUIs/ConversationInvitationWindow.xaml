@@ -1,0 +1,55 @@
+﻿<Window x:Class="CHAT_WPF.GUIs.ConversationInvitationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CHAT_WPF"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Login" Height="500" Width="350"
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" 
+        FontFamily="Segoe UI Emoji">
+<Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="auto"></RowDefinition>
+        <RowDefinition Height="auto"></RowDefinition>
+        <RowDefinition Height="auto"></RowDefinition>
+        <RowDefinition Height="auto"></RowDefinition>
+        <RowDefinition Height="2*"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid Grid.Row="0" Background="#FFD7D7D7">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Invite Friend to group" FontSize="16px" Margin="20 0" VerticalAlignment="Center"></TextBlock>
+        <Button x:Name="close_btn_invite_friend" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right"  Style="{StaticResource MaterialDesignFlatButton}" Click="close_btn_invite_friend_Click" Width="59" >
+            <materialDesign:PackIcon Width="25" Height="25" Foreground="{StaticResource PrimaryHueDarkBrush}" Kind="Close"/>
+        </Button>
+    </Grid>
+    <Grid Grid.Row="1" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0"  Margin="20 0 0 0">
+            <TextBlock x:Name="SearchInputTextBox" Text="Search Name :" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Column="1" Width="230">
+            <TextBox materialDesign:HintAssist.Hint="Enter name friend" FontSize="20" VerticalAlignment="Center" Margin="0,0,34,0.2"/>
+        </Grid>
+    </Grid>
+    <Grid Grid.Row="2">
+        <TextBlock Text="Invite friend to this group conversation" VerticalAlignment="Center" Margin="20 10" Foreground="Black" FontSize="10"></TextBlock>
+    </Grid>
+    <WrapPanel Name="InvitedUsersContainer" Grid.Row="3" Margin="20 0 0 0">
+        <TextBox materialDesign:HintAssist.Hint="List Friend you choosed" FontSize="15" VerticalAlignment="Center" Margin="0,0,0,0.2" Width="317"/>
+    </WrapPanel>
+    <StackPanel x:Name="SearchResultsContainer" Grid.Row="4" Orientation="Vertical" VerticalAlignment="Top">
+
+    </StackPanel>
+</Grid>
+</Window>
+
